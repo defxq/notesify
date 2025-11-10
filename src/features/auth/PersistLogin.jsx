@@ -43,9 +43,8 @@ const PersistLogin = () => {
     }, []);
 
     let content;
-    if (!token && !persist) {
+    if (!token) {
         // content = <Navigate to="/login" replace/>
-        console.log("failed");
         content = <Outlet />
     } else if (isLoading) {
         content = <PulseLoader color={"#2d1bf0ff"}/>
