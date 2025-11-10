@@ -38,6 +38,7 @@ const Prefetch = () => {
     // }, [persist, token])
 
     useEffect(() => {
+        if (!token) return;
         store.dispatch(notesApiSlice.util.prefetch('getNotes', 'notesList', { force: true }))
         store.dispatch(usersApiSlice.util.prefetch('getUsers', 'usersList', { force: true }))
     }, [])

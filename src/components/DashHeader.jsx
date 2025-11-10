@@ -27,7 +27,7 @@ const DashHeader = () => {
     if (logoutSuccess) {
       toast.success("Logged out");
       navigate("/");
-      dispatch(apiSlice.util.resetApiState());
+      // dispatch(apiSlice.util.resetApiState());
     }
   }, [logoutSuccess, navigate]);
   
