@@ -22,7 +22,7 @@ const PersistLogin = () => {
 
 
     useEffect(() => {
-        if (effRef.current === true) { // React 18 Strict Mode // && import.meta.env.NODE_ENV !== "development"
+        // if (effRef.current === true) { // React 18 Strict Mode // && import.meta.env.NODE_ENV !== "development"
             const verifyRefreshToken = async () => {
                 try {
                     console.log("verifying refresh token");
@@ -34,9 +34,9 @@ const PersistLogin = () => {
             };
             // only if no token( when refresh ) and persist so it means when refresh and persist on
             if (!token && persist) verifyRefreshToken();
-        }
+        // }
 
-        return() => effRef.current = true;
+        // return() => effRef.current = true;
     }, []);
 
     let content;
