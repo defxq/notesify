@@ -1,0 +1,53 @@
+th, td {
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: white;
+    text-align: center;
+}
+
+.table_cell--inactive {
+    color: white;
+    background-color: rgba(255, 0, 0, 0.814);
+}
+
+table {
+    background-color: black;
+}
+
+.border {
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.edit-button { 
+    border: 2px solid rgb(0, 4, 255);
+    background-color:rgba(255, 255, 255, 0);
+    font-size: 20px;
+}
+
+.invalidUsername, .invalidPassword {
+    background-color: rgb(255, 133, 133);
+}
+
+.invalidRoles {
+    outline: red 1px solid;
+}
+
+.errorMsg {
+    color: red;
+}
+
+.dashboard {
+    background-color: red;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
