@@ -5,6 +5,7 @@ import useAuth from '../../hooks/useAuth';
 const Welcome = () => {
     const { roles, isAdmin, isManager } = useAuth();
     let date = new Date()
+    const { username, status } = useAuth();
     let today = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'long' }).format(date)
     const [time, setTime] = useState(today);
     // const date = new Date()
@@ -22,8 +23,11 @@ const Welcome = () => {
             clearInterval(timing);
         };
     }, []);
-
-    const content = (
+    let content;
+    if (!status) {
+        content = <Link to="/login"><p>Please log in again</p></Link>
+    }
+    content = (
         <section className="welcome">
 
             <p>{time}</p>
