@@ -7,7 +7,7 @@ const useAuth = () => {
     const token = useSelector(selectCurrentToken);
     let isAdmin = false;
     let isManager = false;
-    let status;
+    let status = false;
 
     if (token) {
         const decoded = jwtDecode(token);
