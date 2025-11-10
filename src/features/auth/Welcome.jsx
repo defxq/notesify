@@ -26,7 +26,7 @@ const Welcome = () => {
     let content;
     if (!status) {
         content = <Link to="/login"><p>Please log in again</p></Link>
-    }
+    } else {
     content = (
         <section className="welcome">
 
@@ -45,7 +45,8 @@ const Welcome = () => {
                 </>}
 
         </section>
-    )
+        )
+    }
 
     return content
 }
