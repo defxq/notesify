@@ -1,14 +1,17 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, Navigate, Outlet } from "react-router";
+import { Link, Navigate, Outlet, useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import usePersists from "../../hooks/usePersists";
 import  { selectCurrentToken } from "./authSlice";
 import { useRefreshMutation } from "./authApiSlice";
 import { PulseLoader } from "react-spinners";
+import useAuth from "../../hooks/useAuth";
 
 const PersistLogin = () => {
     const [persist] = usePersists();
-    const effRef = useRef(false);
+    const { status } = useAuth();
+    const navigate = useNavigate();
+    // const effRef = useRef(false);
     const [trueSuccess, setTrueSuccess] = useState(false);
     const token = useSelector(selectCurrentToken);
     
@@ -20,6 +23,9 @@ const PersistLogin = () => {
         error
     }] = useRefreshMutation();
 
+    useEffect(() => {
+        if (status) navigate("/");
+    }, []);
 
     useEffect(() => {
         // if (effRef.current === true) { // React 18 Strict Mode // && import.meta.env.NODE_ENV !== "development"
