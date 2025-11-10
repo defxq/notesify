@@ -111,9 +111,8 @@ const DashHeader = () => {
       </button>
     )
   }
-  let logoutButton;
-  if (status) {
-    logoutButton = (
+
+    const logoutButton = (
       <button
         title="Logout"
         onClick={handleLogout}
@@ -121,20 +120,22 @@ const DashHeader = () => {
         ◇Logout◇
       </button>
     );
-  }
+
   let buttonsList;
-  if (logoutLoading) {
-    buttonsList = <p>Logging out...</p>
-  } else {
-    buttonsList = (
-      <>
-        {newNoteButton}
-        {notesButton}
-        {usersButton}
-        {newUserButton}
-        {logoutButton}
-      </>
-    );
+  if (status) {
+    if (logoutLoading) {
+      buttonsList = <p>Logging out...</p>
+    } else {
+      buttonsList = (
+        <>
+          {newNoteButton}
+          {notesButton}
+          {usersButton}
+          {newUserButton}
+          {logoutButton}
+        </>
+      );
+    }
   }
   
   return (
