@@ -1,53 +1,119 @@
-th, td {
-    border: 1px solid rgb(0, 0, 0);
-    padding: 10px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: white;
-    text-align: center;
+:root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#94a3b8;
+    --accent:#6c5ce7;
+    --danger:#ff6b6b;
+    --glass: rgba(255,255,255,0.04);
+    --radius:10px;
+    --max-width:1100px;
 }
 
-.table_cell--inactive {
-    color: white;
-    background-color: rgba(255, 0, 0, 0.814);
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: linear-gradient(180deg, #071028 0%, #0b1220 60%);
+    color: #e6eef8;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+    padding:24px;
 }
 
-table {
-    background-color: black;
+.app-container{
+    max-width:var(--max-width);
+    margin:0 auto;
 }
 
-.border {
-    border: 2px solid rgb(0, 0, 0);
+/* Header / nav */
+header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:20px;
 }
 
-.edit-button { 
-    border: 2px solid rgb(0, 4, 255);
-    background-color:rgba(255, 255, 255, 0);
-    font-size: 20px;
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+.brand h1{
+    margin:0;
+    font-size:20px;
+    letter-spacing:1px;
+}
+.logo{
+    width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#4a40d9);
+    box-shadow:0 6px 18px rgba(108,92,231,0.18);
 }
 
-.invalidUsername, .invalidPassword {
-    background-color: rgb(255, 133, 133);
+nav{display:flex;gap:8px;align-items:center}
+
+/* Buttons */
+.btn{
+    appearance:none;border:0;padding:8px 12px;border-radius:8px;background:var(--glass);color:var(--muted);cursor:pointer;font-weight:600;
+    transition:all .15s ease;backdrop-filter: blur(4px);
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:linear-gradient(90deg,var(--accent),#4a40d9);color:#fff;box-shadow:0 8px 20px rgba(76,62,196,0.18)}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+/* Layout */
+.dashboard{padding:18px;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.02));border-radius:var(--radius)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.col-8{grid-column:span 8}
+.col-4{grid-column:span 4}
+
+/* Cards */
+.card{background:linear-gradient(180deg,var(--card),#071226);padding:16px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+.card h2{margin:0 0 12px 0;font-size:16px}
+
+/* Forms */
+label{display:block;margin-bottom:6px;color:var(--muted);font-size:13px}
+input[type=text],input[type=password],textarea,select{
+    width:100%;padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:inherit;font-size:14px
+}
+textarea{min-height:100px}
+.form-row{margin-bottom:12px}
+
+/* Tables */
+.table-wrap{overflow:auto;border-radius:10px}
+table{width:100%;border-collapse:collapse;background:transparent}
+th,td{padding:12px 10px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.04)}
+th{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px}
+tr:nth-child(even) td{background:rgba(255,255,255,0.01)}
+.table_cell--inactive{color:#fff;background:rgba(255,107,107,0.18);padding:6px 10px;border-radius:8px;display:inline-block}
+
+.edit-button{border:1px solid rgba(108,92,231,0.9);background:transparent;color:var(--accent);padding:6px 10px;border-radius:8px;font-size:14px}
+
+.errorMsg{color:var(--danger);font-weight:600}
+.invalidUsername,.invalidPassword{background:rgba(255,99,99,0.08);padding:6px;border-radius:6px}
+.invalidRoles{outline:2px solid rgba(255,99,99,0.12);padding:8px;border-radius:6px}
+
+.border{border:1px solid rgba(255,255,255,0.04);padding:8px;border-radius:8px}
+
+/* Footer */
+footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+/* Utilities */
+.muted{color:var(--muted)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Responsive */
+@media (max-width:900px){
+    .grid{grid-template-columns:repeat(6,1fr)}
+    .col-8{grid-column:span 6}
+    .col-4{grid-column:span 6}
+    header{flex-direction:column;align-items:flex-start;gap:12px}
 }
 
-.invalidRoles {
-    outline: red 1px solid;
-}
-
-.errorMsg {
-    color: red;
-}
-
-.dashboard {
-    background-color: red;
-}
-
-nav {
-    display: flex;
-    justify-content: flex-end;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@media (max-width:520px){
+    body{padding:12px}
+    th,td{padding:10px}
+    .brand h1{font-size:16px}
 }
