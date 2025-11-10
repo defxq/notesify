@@ -24,7 +24,11 @@ const DashHeader = () => {
   }] = useSendLogoutMutation();
 
   useEffect(() => {
-    
+    if (logoutSuccess) {
+      toast.success("Logged out");
+      navigate("/");
+      dispatch(apiSlice.util.resetApiState());
+    }
   }, [logoutSuccess, navigate]);
   
   // const handleLogout = () => triggerLogout();
@@ -32,11 +36,6 @@ const DashHeader = () => {
   const handleLogout = () => {
     localStorage.clear();
     triggerLogout();
-    if (logoutSuccess) {
-      toast.success("Logged out");
-      navigate("/");
-      dispatch(apiSlice.util.resetApiState());
-    }
   }
   const onUsersClicked = () => navigate("/dash/users");
   const onNotesClicked = () => navigate("/dash/notes");
